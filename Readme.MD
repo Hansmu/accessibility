@@ -58,3 +58,40 @@ https://webaim.org/resources/contrastchecker/
 A good idea is to first design the page in grayscale. Then check if all of the page
 interactions are obvious. After that is certain, then you can start adding color.
 Color should be used only as a secondary pointer of importance, not the primary.
+
+### ARIA
+A set of attributes that make the HTML elements more accessible. Makes them more
+understandable to screen readers. The basic syntax is `aria-*`, where `*` defines
+a specific property. 
+
+`aria-expanded="false"` to define whether a sidebar is open or not.
+
+An example of `aria-label` would be adding a descriptive label to a link with an icon.
+So social media links at the like.
+
+`aria-labelledby` to avoid copy pasting text. If there's a paragraph text that describes the image, that's 
+usually visible, then in order to avoid copy pasting that text into an image `alt`
+property, then you could instead use `aria-labelledby` to refer to the ID of the 
+paragraph text and the screenreaders would understand that the image is described
+by that paragraph tag.
+
+`role` doesn't have an aria prefix, but it's used to describe an element if it
+isn't doing what it's semantically supposed to. So a div that acts as a button.
+Remember to always add a `tabindex="0"` if you're defining such an element, so
+that it could be focused with the tab.
+
+### Accessible images
+If you don't have an `alt` attribute on your image, then the screenreader is going
+to read the filename of the image, so the entire URL. If you have a background
+image described via CSS background, then it doesn't matter, the screenreader
+will skip it, but if it's an image tag, then it won't. There's no point in adding
+"Image of ..." or something like that into alt, because then the screenreader will
+say something like "image Image of...". If you have multiple sentences in an alt, then
+use punctuation marks. However, if you have a caption for the image, then it's 
+best to keep the `alt` as empty, so that it wouldn't read the image src and then
+have an `aria-labelledby` pointing to the caption.
+
+One common mistake that people make is describing what is on an image, when it 
+actually has a functional feature. E.g. a company image that leads you back to
+the homepage. So in case you have a link with an image inside of it, you'd say
+in the alt property `Homepage` or something like that, instead of `Company logo`.
