@@ -119,3 +119,18 @@ with hover. Generally hovering darkens a button or something like that, so make
 sure that the visual feedback style is also triggered on focus, so that the user
 could understand what is focused without having an outline. However, if it is
 very subtle, then you'd probably want to still add an outline.
+
+### Tabindex
+Tabindex allows the user to use their keyboard to focus an element. Interactable
+elements can a tab index by default. However, if you're adding custom elements
+and want them to be focusable, then add a `tabindex="0"` property to it. If you
+have `display: none` or the `hidden` attribute, then tabindex is removed, so the
+user wouldn't focus on a hidden element. If you define `tabindex="-1"`, then 
+the user won't be able to focus the element using a tab. However, you'd still
+be able to focus the element using Javascript. Add a `tabindex="-1"` to default
+interactive elements is a bad idea, though, and that means that you probably
+want to use a different component for what you are doing. The value that you set
+to tabindex is the priority they get when tabbing. However, this can make interactions
+really confusing, if you're using values other than 0 and -1. The user would be
+jumping back and forth in an order they might not be expecting. So when using
+things tabbable, just use 0 or -1.
