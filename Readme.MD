@@ -93,5 +93,29 @@ have an `aria-labelledby` pointing to the caption.
 
 One common mistake that people make is describing what is on an image, when it 
 actually has a functional feature. E.g. a company image that leads you back to
-the homepage. So in case you have a link with an image inside of it, you'd say
+the homepage. So in case you have a link with an image inside it, you'd say
 in the alt property `Homepage` or something like that, instead of `Company logo`.
+
+### Outline
+When you focus an element, then you get an outline. A lot of pages disable it
+because of some idea of visuals. However, this is a huge blow to accessibility.
+Without the outline, you wouldn't know what you have selected when using a tab to 
+focus. Browsers have a different outline. It's suggested that you have a custom
+outline, because the default outline can be very thin, based on the browser, so
+it can be barely visible. So two things to keep in mind when defining the outline
+for your application - have the outline thick enough to notice and have it use
+a color that is the complete opposite your usual color. So if your webpage is red,
+go with a green outline. Maximize contrast.
+
+```
+*:focus: {
+    outline: 4px solid lime;
+}
+```
+
+Button elements often have their outline disabled by a component library. The
+best idea when dealing with buttons is to add the same styles to focus as you have
+with hover. Generally hovering darkens a button or something like that, so make
+sure that the visual feedback style is also triggered on focus, so that the user
+could understand what is focused without having an outline. However, if it is
+very subtle, then you'd probably want to still add an outline.
