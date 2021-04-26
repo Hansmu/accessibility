@@ -134,3 +134,32 @@ to tabindex is the priority they get when tabbing. However, this can make intera
 really confusing, if you're using values other than 0 and -1. The user would be
 jumping back and forth in an order they might not be expecting. So when using
 things tabbable, just use 0 or -1.
+
+
+### Bypass blocks
+If someone comes to your page and wants to make an appointment and the make
+an appointment link is at the very bottom, then the user has to tab through
+the entire page to get to the appointment block. When you press tab, then
+a link appears that allows you to skip to the main content of the page. They're
+generally at the top of the page, but if you have a lot of repeated content, then
+you can add them in the middle as well. Skip links only appear when you're
+using the site. An example of a skip link would be if you have a filter and the
+user wants to avoid tabbing through that to get to the desired content, so you
+can add a skip link to the top of the filter.
+
+In order to add a skip link you can add an element with an anchor element inside
+it that references another element on the site by ID. So the HTML of the skip link
+looks like
+```
+.skip-link {
+    transform: translateY(-100%);
+}
+
+.skip-link:focus {
+    transform: translateY(0%);
+}
+
+<a class="skip-link" href="#content">Skip to main content</a>
+```
+where #content is the ID of the main content area. Initial style is there to 
+hide the content. When it gets focused, then bring it back into view.
