@@ -67,7 +67,10 @@ a specific property.
 `aria-expanded="false"` to define whether a sidebar is open or not.
 
 An example of `aria-label` would be adding a descriptive label to a link with an icon.
-So social media links at the like.
+So social media links at the like. If you have `aria-label` on an interactive
+element, then `aria-label` is prioritized over the text of that element. E.g.
+`<button aria-label="Shop now">Shop</button>` results in "Shop now" from the
+screenreader, instead of "Shop now, Shop".
 
 `aria-labelledby` to avoid copy pasting text. If there's a paragraph text that describes the image, that's 
 usually visible, then in order to avoid copy pasting that text into an image `alt`
@@ -163,3 +166,50 @@ looks like
 ```
 where #content is the ID of the main content area. Initial style is there to 
 hide the content. When it gets focused, then bring it back into view.
+
+### Accessible video and audio
+Good idea to provide captions and transcripts for audio/video as it'll help
+disabled people, but also allows indexing by search engines. Closed and open
+captions are used. Closed are the ones you can toggle on/off, so you'll get
+the ability to give multiple language supports. Open means that they are baked
+into the video, and you cannot remove them without editing the video. If you have
+closed captions, then it might be a good idea to include it in the video description
+as well so people'd know to search for it. E.g. `The Biscuit Killer [Closed Captions]`.
+
+Quality captions include:
+* Correct grammar & punctuation
+* All on-screen text. E.g. if the speaker is showing text and doesn't describe it.
+* Audio description. E.g. `monitor beeping erratically`
+* Placing the captions so that they don't block anything important
+
+Audio description is a voice clip that describes what is happening in the video.
+If you cannot provide it, then make sure that the transcript and/or the captions 
+are descriptive.
+
+Same for presentations. When giving one, try to accurately describe the charts 
+and what not instead of just saying something like "According to the chart, the
+profits have doubled". Explain exactly the numbers.
+
+```
+My rule of thumb is, anytime I am lecturing and I am tempted to say the 
+words "as you can see" means I must change the way I say it.
+```
+
+Additional note - using carousels are bad. Should avoid them altogether on your
+website.
+
+When choosing a media playback software for accessibility, then keep in mind to check
+that they support:
+
+* Displaying captions
+* Button for audio descriptions
+* Full screen option
+* Keyboard accessible
+* As Cross Browser Compatible as possible (toss it if it doesn't run on the most popular browsers)
+* Support for interactive transcript
+
+```
+Captions, transcript, audio description, non-seizure/migraine inducing 
+content, keyboard functions, accessible player - it all ties together to 
+create an incredible experience for abled and disabled users.
+```
